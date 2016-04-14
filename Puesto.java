@@ -50,7 +50,7 @@ public class Puesto {
     
     @Override
     public String toString () {            
-            return "Codigo: " + codigo + " Nombre de unidad: " + nombre_unidad + " Localidad: " + localidad + " Disponibilidad: " + disponible;
+            return "Codigo: " + codigo + " Nombre de unidad: " + nombre_unidad;
     }
   
     
