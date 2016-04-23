@@ -14,23 +14,39 @@ public class Ejercito {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /*Comprobación de que existen los archivos (grupo 1)*/
-        if (puestos.exists()&& candidatos.exists())
-        /* Recorrido array puestos (grupo 3)*/    
-         for (i=0, i< array_Puestos.lenght, i++){
-             Lista_Puestos.set_Puestos();
-         }
-        /* Recorrido array candidatos (grupo 2)*/
-         for (i=0, i< array_Candidatos.lenght, i++){
-             Lista_Candidatos.set_Candidatos();
-         } 
-        /* Llamada al metodo pàra ordenar el array Candidatos*/ 
-        array_Candidatos.ordenar_Candidatos();
-         for (i=0, i< array_Candidatos.lenght, i++){
-             Candidato.asignar();
-         }
-        /*Llamada al método para mostrar el menú*/ 
-        Menu.muestaMenu(); 
+        /* Se inicia instancia de clase de ListaCandidatos*/
+        ListaCandidatos listaCandidatos = new ListaCandidatos();
+        
+        /* Se inicia instancia de clase de ListaPuestos*/
+        ListaPuestos listaPuestos = new ListaPuestos();
+        
+        /* Se aplica su método constructor para hacer la lectura del archivo puestos.txt*/
+        listaPuestos.ListaPuestos();
+        
+        /* Recorrido array puestos
+        Muestra por pantalla los puestos aun sin asignar*/
+        for (int i=0; i< listaPuestos.arrayPuestos.size(); i++){
+            System.out.println(listaPuestos.arrayPuestos.get(i).toString());
+        }
+        
+        /* Se aplica su método constructor para hacer la lectura del archivo candidatos.txt*/
+        listaCandidatos.ListaCandidatos();
+        
+        /* Recorrido array candidatos (grupo 2)
+        Muestra por pantalla los candidatos aun sin asignar ni ordenar */
+        for (int i=0; i< listaCandidatos.arrayCandidatos.size(); i++){
+            System.out.println(listaCandidatos.arrayCandidatos.get(i).toString());
+            
+        } 
+        
+        /* Llamada al metodo para ordenar el array Candidatos*/ 
+        listaCandidatos.ordenarCandidatos();
+        
+        /* Llamada al metodo para iniciar el algoritmo de Asignación de puestos */
+        listaCandidatos.Asignar(listaPuestos.arrayPuestos);
+        
+        /* Llamada al método para mostrar el menú */ 
+        Menu.muestraMenu(listaCandidatos,listaPuestos); 
     }
     
     
