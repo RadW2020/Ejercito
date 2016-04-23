@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package practicaconjuntaclase;
+package ejercito;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -14,20 +9,24 @@ import java.util.Scanner;
  */
 public class Menu {
     
-    public String muestraMenu(){
+    public static void muestraMenu(ListaCandidatos listaC, ListaPuestos listaP){
     
-      Scanner teclado = new Scanner(System.in);
+        Scanner teclado = new Scanner(System.in);
 
         int opcion;
 
         do {
             try {
 
-                System.out.println("Elige una opción : \n1. Mostrar lista candidatos.\n2. Mostrar puestos sin asignar.\n3. Salir.");
+                System.out.println("Elige una opción : \n"
+                        + "1. Mostrar lista candidatos.\n"
+                        + "2. Mostrar puestos sin asignar.\n"
+                        + "3. Mostrar puestos.\n"
+                        + "4. Salir.");
 
                 opcion = teclado.nextInt();
 
-                if (opcion != 1 && opcion != 2 && opcion != 3) {
+                if (opcion != 1 && opcion != 2 && opcion != 3 && opcion != 4) {
 
                     System.err.println("OPCIÓN NO VÁLIDA, INTÉNTALO DE NUEVO.");
                 }
@@ -43,26 +42,27 @@ public class Menu {
 
             switch (opcion) {
 
-                case 1:
-
-                    System.out.println("Pendiente del paso de parámetros");
-
+                case 1: 
+                    
+                    listaC.mostrarCandidatos();
+                    
                     break;
                 case 2:
 
-                    System.out.println("Pendiente del paso de parámetros");
+                    listaP.mostrarPuestosSinAsignar();
 
                     break;
                 case 3:
 
-                    System.out.println("cPendiente del paso de parámetros");
+                    listaP.mostrarPuestos();
 
-                    break;
+                break;
+                
             }
 
-        } while (opcion != 1 && opcion != 2 && opcion != 3);
+        } while (opcion != 4);
         
         System.out.println("GRACIAS POR UTILIZAR NUESTRA APLICACIÓN.");
     
-}
+    }
 }

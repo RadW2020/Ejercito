@@ -1,79 +1,79 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package ejercito;
 
 /**
+ * Clase Candidato. Esta clase es usada para dar forma a los datos que se 
+ * leen desde el archivo candidatos.txt
+ * Cada linea del archivo leido se transforma en un objeto Candidato
+ * usando este constructor y obteniendo estos métodos.
  *
- * @author nocturno
+ * @author Tomas
  */
 public class Candidato {
 
-    private String DNI;
-    private String Nombre;
-    private String Apellido;
-    private String FechaNacimiento;
-    private float NotaMedia;
-    private String Preferencia1;
-    private String Preferencia2;
-    private String Preferencia3;
-    private String Destino;
-
-    public String getDNI() { return DNI;  }
-    public void setDNI(String DNI) { this.DNI = DNI;   }
-
-    public String getNombre() {  return Nombre;   }
-    public void setNombre(String Nombre) {  this.Nombre = Nombre; }
-
-    public String getApellido() {  return Apellido;  }
-    public void setApellido(String Apellido) {  this.Apellido = Apellido;  }
-
-    public String getFechaNacimiento() { return FechaNacimiento; }
-    public void setFechaNacimiento(String FechaNacimiento) { this.FechaNacimiento = FechaNacimiento;   }
-
-    public float getNotaMedia() {   return NotaMedia;     }
-    public void setNotaMedia(float NotaMedia) {   this.NotaMedia = NotaMedia;  }
-
-    public String getPreferencia1() {       return Preferencia1;    }
-    public void setPreferencia1(String Preferencia1) {           this.Preferencia1 = Preferencia1;      }
-
-    public String getPreferencia2() {        return Preferencia2;    }
-    public void setPreferencia2(String Preferencia2) {           this.Preferencia2 = Preferencia2;    }
-
-    public String getPreferencia3() {     return Preferencia3;     }
-    public void setPreferencia3(String Preferencia3) {    this.Preferencia3 = Preferencia3;   }
-
+    private String dni;
+    private String nombre;
+    private String apellido;
+    private String fechaNacimiento;
+    private double notaMedia;
+    private String preferencia1;
+    private String preferencia2;
+    private String preferencia3;
+    private String destino;
     
     
-    
-    public String getDestino() {  return Destino;   }
-    public void DestinoCodigo(String Destino) {   this.Destino = Destino;    }
-    /**
-     * Clase que asigna candidatos a puestos
-     * 
-     */
-    public void Asignar() {
-        for (int i=0; i<Array_Candidatos.length(); i++) {
-            for (int j=0; j<Array_Puestos.length(); j++) {  // bucle de puestos desde el primero al ultimo de libres
-                if (Array_Candidatos[i].Preferencia1 == Array_Puestos[j].Cod_Puesto) { // si preferencia1 = puesto
-                        this.DestinoCodigo(Preferencia1);  // asignar destino
-                        Puesto.setDisponible(false);          // asignar no disponible del puesto
-                        break; }                            //bucle puestos
-                else if (Array_Candidatos[i].Preferencia2 == Array_Puestos[j].Cod_Puesto) { // si preferencia2 = puesto
-                        this.DestinoCodigo (Preferencia2);  // asignar destino
-                        Puesto.setDisponible(false);          // asignar no disponible del puesto
-                        break; }                       //bucle puestos
-                else if (Array_Candidatos[i].Preferencia3 == Array_Puestos[j].Cod_Puesto) { // si preferencia3 = puesto
-                        this.DestinoCodigo (Preferencia3);  // asignar destino
-                        Puesto.setDisponible(false);          // asignar no disponible del puesto
-                        break; }                        //bucle puestos
-                else this.DestinoCodigo ("0?000/000");
-            } // fin bucle puestos
-        } // fin bucle candidatos
-                    
+    public Candidato(String dni, String Nombre, String Apellido, 
+                    String FechaNacimiento, double NotaMedia, String Preferencia1,
+                    String Preferencia2, String Preferencia3, String Destino) {
+        this.dni = dni;
+        this.nombre = Nombre;
+        this.apellido = Apellido;
+        this.fechaNacimiento = FechaNacimiento;
+        this.notaMedia = NotaMedia;
+        this.preferencia1 = Preferencia1;
+        this.preferencia2 = Preferencia2;
+        this.preferencia3 = Preferencia3;
+        this.destino = Destino;
     }
     
     
+    public String getDni() { return dni;  }
+    public void setDni(String dni) { this.dni = dni;   }
+
+    public String getNombre() {  return nombre;   }
+    public void setNombre(String Nombre) {  this.nombre = Nombre; }
+
+    public String getApellido() {  return apellido;  }
+    public void setApellido(String Apellido) {  this.apellido = Apellido;  }
+
+    public String getFechaNacimiento() { return fechaNacimiento; }
+    public void setFechaNacimiento(String FechaNacimiento) { this.fechaNacimiento = FechaNacimiento;   }
+
+    public double getNotaMedia() {   return notaMedia;     }
+    public void setNotaMedia(double NotaMedia) {   this.notaMedia = NotaMedia;  }
+
+    public String getPreferencia1() {       return preferencia1;    }
+    public void setPreferencia1(String Preferencia1) {           this.preferencia1 = Preferencia1;      }
+
+    public String getPreferencia2() {        return preferencia2;    }
+    public void setPreferencia2(String Preferencia2) {           this.preferencia2 = Preferencia2;    }
+
+    public String getPreferencia3() {     return preferencia3;     }
+    public void setPreferencia3(String Preferencia3) {    this.preferencia3 = Preferencia3;   }
     
+    public String getDestino() {  return destino;   }
+    public void setDestino(String Destino) {   this.destino = Destino;    }
+    
+    /**
+     * Método toString sobreescrita para leer los datos de cada candidato 
+     * por pantalla
+     * @return 
+     */
+    @Override
+    public String toString () {
+        return "DNI: " + dni + " Nombre: " + nombre + " Apellido: " + apellido 
+                + " Fecha de Nacimiento: " + fechaNacimiento
+                + " Nota Media: " + notaMedia 
+                + " Preferencias: " + preferencia1+" "+preferencia2+" "+preferencia3
+                + " Destino: " + destino;
+    }
 }

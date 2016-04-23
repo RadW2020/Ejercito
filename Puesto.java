@@ -1,7 +1,11 @@
+package ejercito;
 
-package raul.s.application;
-
-
+/**
+ * Clase Puesto. Esta clase es usada para dar forma a los datos que se 
+ * leen desde el archivo puestos.txt
+ * Cada linea del archivo leido se transforma en un objeto Puesto
+ * usando este constructor y obteniendo estos métodos.
+ */
 public class Puesto {
 
     private String codigo;
@@ -48,9 +52,18 @@ public class Puesto {
         this.disponible = disponible;
     }
     
+    public boolean getDisponible() {
+        return disponible;
+    }
+    /**
+     * Método toString sobreescrito para leer los datos de cada puesto
+     * por pantalla
+     * @return  
+     */
     @Override
-    public String toString () {            
-            return "Codigo: " + codigo + " Nombre de unidad: " + nombre_unidad;
+    public String toString () {
+        return "Codigo: " + codigo + " Nombre de unidad: " + nombre_unidad 
+                + " Localidad: " + localidad + " disponible: " + disponible;
     }
   
     
