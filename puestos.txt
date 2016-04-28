@@ -1,6 +1,0 @@
-5J004/001;ladroneros;mojacar
-5J004/002;berberechos;Almeria 
-5J008/003;lamoleta;murcia
-5J042/004;ganchoDeLaton;madrid
-5J042/005;legionariosDePlomo;Albacete
-5J007/007;Boinasverdes;Bilbao
