@@ -42,6 +42,13 @@ public class Ejercito {
         /* Llamada al metodo para ordenar el array Candidatos*/ 
         listaCandidatos.ordenarCandidatos();
         
+        
+        /* Recorrido array candidatos*/
+        System.out.println("------------------");
+        for (int i=0; i< listaCandidatos.arrayCandidatos.size(); i++){
+            System.out.println(i + " " + listaCandidatos.arrayCandidatos.get(i).toString());
+            
+        } 
         /* Llamada al metodo para iniciar el algoritmo de Asignación de puestos */
         listaCandidatos.Asignar(listaPuestos.arrayPuestos);
         

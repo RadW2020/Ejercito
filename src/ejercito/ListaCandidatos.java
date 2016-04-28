@@ -92,35 +92,32 @@ public class ListaCandidatos {
      * @param arrayPuestos
      */
     public void Asignar(ArrayList<Puesto> arrayPuestos) {
-        //INTERESANTE la transformación en for-loop mejorado que propone el ide
         
         for (int i=0; i<  arrayCandidatos.size(); i++) { //bucle de candidatos
-            for (int j=0; j< arrayPuestos.size(); j++) { // bucle de puestos 
+            
+            ArrayList<String> arrPrefs = new ArrayList<>();  //ArrayList temporal para las tres preferencias
+            arrPrefs.add(arrayCandidatos.get(i).getPreferencia1());
+            arrPrefs.add(arrayCandidatos.get(i).getPreferencia2());
+            arrPrefs.add(arrayCandidatos.get(i).getPreferencia3());
+            
+            Boolean candidatoSinAsignar = true; //control de flujo
+            
+            for (int j=0; j< arrPrefs.size(); j++) { // bucle de preferencias 
                 
-                String getC = arrayPuestos.get(j).getCodigo();
-                
-                if (arrayPuestos.get(j).getDisponible() == false) { 
-                    arrayCandidatos.get(i).setDestino("0?000/000");
-                }
-                else if (arrayCandidatos.get(i).getPreferencia1().equals( getC )) { // si preferencia1 = puesto
-                        arrayCandidatos.get(i).setDestino( getC );   // asignar destino
-                        arrayPuestos.get(j).setDisponible(false);          // asignar no disponible del puesto
-                        break;
-                }                           
-                else if (arrayCandidatos.get(i).getPreferencia2().equals( getC )) { // si preferencia1 = puesto
-                        arrayCandidatos.get(i).setDestino( getC );   // asignar destino
-                        arrayPuestos.get(j).setDisponible(false);          // asignar no disponible del puesto
-                        break;
-                }                       
-                else if (arrayCandidatos.get(i).getPreferencia3().equals( getC )) { // si preferencia1 = puesto
-                        arrayCandidatos.get(i).setDestino( getC );   // asignar destino
-                        arrayPuestos.get(j).setDisponible(false);          // asignar no disponible del puesto
-                        break;
-                }                        
-                
-            } // fin bucle puestos
-        } // fin bucle candidatos
+                for (int k=0; (k < arrayPuestos.size()) && (candidatoSinAsignar == true) ; k++){ // bucle destinos 
                     
+                    String getC = arrayPuestos.get(k).getCodigo(); // var temporal con el código del puesto 
+                    
+                    if (arrPrefs.get(j).equals(getC) 
+                            && (candidatoSinAsignar == true)
+                            && (arrayPuestos.get(k).getDisponible() == true) ){
+                        arrayCandidatos.get(i).setDestino( getC );   // asignar destino
+                        arrayPuestos.get(k).setDisponible(false);
+                        candidatoSinAsignar = false;
+                    }
+                }
+            }
+        }
     }
     
     /**
